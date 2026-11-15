@@ -96,6 +96,7 @@ export function fire(a) {
       head = rayHead(a.x, eyeY, a.z, _dir.x, _dir.y, _dir.z, b, t);
     }
   }
+  if (!Number.isFinite(bestT)) bestT = 200; // ray escaped to the sky: cap so hit coords stay finite
   _hit.agent = victim; _hit.head = head; _hit.dist = bestT;
   _hit.x = a.x + _dir.x * bestT; _hit.y = eyeY + _dir.y * bestT; _hit.z = a.z + _dir.z * bestT;
   _hit.wall = victim === null;
